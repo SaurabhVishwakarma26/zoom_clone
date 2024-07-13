@@ -25,6 +25,7 @@ const MobileNav = () => {
             height={36}
             alt="hamburger icon"
             className="cursor-pointer sm:hidden"
+            style={{ width: "auto", height: "auto" }}
           />
         </SheetTrigger>
         <SheetContent side="left" className="border-none bg-dark-1">
@@ -35,6 +36,7 @@ const MobileNav = () => {
               height={32}
               alt="Yoom Logo"
               className="max-sm:size-10"
+              style={{ width: "auto", height: "auto" }}
             />
             <p
               className="text-[26px] font-extrabold
