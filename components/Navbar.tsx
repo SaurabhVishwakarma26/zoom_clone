@@ -17,6 +17,7 @@ const Navbar = () => {
           height={32}
           alt="Yoom Logo"
           className="max-sm:size-10"
+          style={{ width: "auto", height: "auto" }}
         />
         <p
           className="text-[26px] font-extrabold
