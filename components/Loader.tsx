@@ -9,7 +9,7 @@ const Loader = () => {
         alt="Loading"
         width={50}
         height={50}
-        style={{ width: "auto", height: "auto" }}
+        // style={{ width: "auto", height: "auto" }}
       />
     </div>
   );
