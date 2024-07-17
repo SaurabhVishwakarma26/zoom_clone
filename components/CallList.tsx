@@ -8,6 +8,7 @@ import MeetingCard from "./MeetingCard";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useToast } from "./ui/use-toast";
+import { useUser } from "@clerk/nextjs";
 
 const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const router = useRouter();
@@ -16,6 +17,7 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
   const [recordings, setRecordings] = useState<CallRecording[]>([]);
 
   const { toast } = useToast();
+  const {user} = useUser();
 
   const getCalls = () => {
     switch (type) {
@@ -86,7 +88,7 @@ const CallList = ({ type }: { type: "ended" | "upcoming" | "recordings" }) => {
             title={
               (meeting as Call).state?.custom?.description ||
               (meeting as CallRecording).filename?.substring(0, 20) ||
-              "No Description"
+              `${user?.username}'s Personal Room`
             }
             date={
               (meeting as Call).state?.startsAt?.toLocaleString() ||

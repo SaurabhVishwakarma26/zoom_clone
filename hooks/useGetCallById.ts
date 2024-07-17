@@ -11,17 +11,19 @@ export const useGetcallById = (id: string | string[]) => {
     if (!client) return;
 
     const loadCall = async () => {
-      const { calls } = await client.queryCalls({
-        filter_conditions: {
-          id,
-        },
-      });
+      try {
+        // https://getstream.io/video/docs/react/guides/querying-calls/#filters
+        const { calls } = await client.queryCalls({
+          filter_conditions: { id },
+        });
 
-      if (calls.length > 0) {
-        setCall(calls[0]);
+        if (calls.length > 0) setCall(calls[0]);
+
+        setIsCallLoading(false);
+      } catch (error) {
+        console.error(error);
+        setIsCallLoading(false);
       }
-
-      setIsCallLoading(false);
     };
 
     loadCall();
